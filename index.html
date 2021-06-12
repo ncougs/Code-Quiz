@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quiz Challenge</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="Assets/CSS/reset.css" />
+        <link rel="stylesheet" type="text/css" href="Assets/CSS/style.css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a id="highScore">View Highscores</a>
+                <div class="timer">Time Remaining: <span id="countDown">60</span></div>
+            </nav>
+        </header>
+        <main>
+            <section class="startPage">
+                <h1>Quiz Challenge</h1>
+                <div class="mainText">
+                    <h2>Start the quiz to beat the highscore!</h2>
+                    <p>Answer all questons before the timer runs out. Any wrong answers will decrease the time remaining on the clock. Your final scroe is the amount of time remaning. Good luck!</p>
+                </div>
+                <button id="startQuiz">Start Quiz</button>
+            </section>
+
+            <section class="questionSection">
+                <h2 id="question">Question:</h2>
+                <ul class="questionOptions">
+                    <li><button id="option1">Option 1</button></li>
+                    <li><button id="option2">Option 2</button></li>
+                    <li><button id="option3">Option 3</button></li>
+                    <li><button id="option4">Option 4</button></li>
+                </ul>
+            </section>
+        </main>
+        <script src="Assets/JavaScript/script.js"></script>
+    </body>
+</html>
