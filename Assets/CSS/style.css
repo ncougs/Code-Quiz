@@ -37,7 +37,7 @@ main {
     padding: 20px;
 }
 
-.mainText h2, .questionSection h2, .finalPage h2 {
+.mainText h2, .questionSection h2, .finalPage h2, .highScoreSection h2 {
     font-size: 30pt;
     font-weight: bold;
     padding-bottom: 10px;
