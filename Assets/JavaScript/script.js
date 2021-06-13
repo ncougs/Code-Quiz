@@ -12,7 +12,6 @@ var option1 = document.getElementById("option1");
 var option2 = document.getElementById("option2");
 var option3 = document.getElementById("option3");
 var option4 = document.getElementById("option4");
-var displayHighScoreEL = document.querySelector("#displayHighScores");
 
 //Global Scope Variables
 
@@ -88,21 +87,7 @@ function submitHighScore (event) {
 
     localStorage.setItem("highScoreList", JSON.stringify(highScores));
    
-    location.href = "highScores.html";
-}
-
-function addHighScores () {
-
-    var highScores = JSON.parse(localStorage.getItem("highScoreList"));
-
-    highScores.forEach(element => {
-
-        var newListEL = document.createElement("li");
-        newListEL.textContent = element.initials.toUpperCase().trim() + " - " + element.score; 
-    
-        displayHighScoreEL.appendChild(newListEL);
-        
-    });
+    location.href = "highScores.html";   
 };
 
 //Timer
@@ -175,13 +160,7 @@ function init () {
     return;
 };
 
-
-if (window.location.href.includes("index.html")){
-    init();
-}
-else {
-    addHighScores();
-}
+init();
 
 
 
