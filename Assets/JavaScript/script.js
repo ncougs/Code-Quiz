@@ -25,8 +25,8 @@ var question1 = {
 
 var question2 = {
     question: "Which option is NOT a variable tpe?",
-    options: ["String", "Loops", "Numbers", "Boolean"],
-    answer: "Loops"
+    answer: "Loops",
+    options: ["String", "Loops", "Numbers", "Boolean"]
 };
 
 var question3 = {
@@ -41,7 +41,15 @@ var question4 = {
     answer: "localStorage.getItem(name)"
 };
 
-var questionlist = [question1, question2, question3, question4]
+var question5 = {
+    question: "What does the variable type 'Boolean' contain",
+    options: ["true or flase", "Text", "large number", "HTML elements"],
+    answer: "true/flase statements"
+};
+
+
+
+var questionlist = [question1, question2, question3, question4, question5]
 var questionCounter = 0
 
 //Start Quiz
@@ -49,7 +57,7 @@ var questionCounter = 0
 function startQuiz () {
     startQuizDisplay()
     setTimer();
-    addQuestion(questionlist[questionCounter]);
+    addQuestion();
     questionOptionsEL.addEventListener("click", collectAnswer);
     submitInitialsEL.addEventListener("click", submitHighScore);
 }
@@ -114,15 +122,37 @@ function setTimer () {
     };
 }
 
-function addQuestion (question) {
-    questionEL.textContent = question.question;
-    option1.textContent = "1.   " + question.options[0]
-    option2.textContent = "2.   " + question.options[1]
-    option3.textContent = "3.   " + question.options[2]
-    option4.textContent = "4.   " + question.options[3]
+function addQuestion () {
+
+    var options = questionlist[questionCounter].options;
+    var question = questionlist[questionCounter].question;
+
+    questionEL.textContent = question;
+
+    var counter = 1;
+
+    for (i=0; i < options.length; i++) {
+        var newListEL = document.createElement("li");
+
+        var newButtonEL = document.createElement("button");
+        newButtonEL.textContent = counter + ".  " + options[i];
+        newButtonEL.setAttribute("class", "questionOption");
+            
+        questionOptionsEL.appendChild(newListEL);
+
+        newListEL.appendChild(newButtonEL);
+
+        counter = counter + 1;
+    };  
 }
 
 function nextQuestion () {
+
+    var questionListOptionsEL =  document.querySelectorAll(".questionOption");
+
+    for (i=0; i < questionListOptionsEL.length; i++) {
+        questionListOptionsEL[i].remove();
+    };
        
     questionCounter++;
   
@@ -131,7 +161,7 @@ function nextQuestion () {
         // questionCounter = 0;
     }
     else {
-        addQuestion(questionlist[questionCounter]);
+        addQuestion();
     };
 };
 
@@ -146,7 +176,14 @@ function collectAnswer (event) {
         }
         else {
             //add wrong answer sound
-            timeRemaining = timeRemaining - 10;
+
+            if (timeRemaining - 10 <= 0) {
+                timeRemaining = 0
+            }
+            else {
+                timeRemaining = timeRemaining - 10;  
+            };
+                  
         };   
                     
         nextQuestion();
