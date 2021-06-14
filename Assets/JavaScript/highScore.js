@@ -5,22 +5,29 @@ var resetScoresEL = document.querySelector("#clearScores");
 
 function addHighScores () {
 
+    var counter = 1;
+
     var highScores = JSON.parse(localStorage.getItem("highScoreList"));
 
     if (highScores == null) {
         return;
     }
     else {
+
+        highScores.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
+        
         highScores.forEach(element => {
 
             var newListEL = document.createElement("li");
-            newListEL.textContent = element.initials.toUpperCase().trim() + " - " + element.score; 
+            newListEL.textContent = counter + ".    " +  element.initials.toUpperCase().trim() + " - " + element.score; 
             newListEL.setAttribute("class", "highScore");
         
             displayHighScoreEL.appendChild(newListEL);
+
+            counter = counter + 1;
         });
     return;
-    } 
+    };
 };
 
 function goBack () {
