@@ -40,7 +40,7 @@ var question4 = {
 var question5 = {
     question: "What does the variable type 'Boolean' contain",
     options: ["true or flase", "Text", "large number", "HTML elements"],
-    answer: "true/flase statements"
+    answer: "true or flase"
 };
 
 
@@ -157,6 +157,12 @@ function addQuestion () {
 
 function nextQuestion () {
 
+    var answerResponse = document.querySelectorAll(".response");
+
+    for (i=0; i < answerResponse.length; i++) {
+        answerResponse[i].remove();
+    };
+
     var questionListOptionsEL =  document.querySelectorAll(".questionOption");
 
     for (i=0; i < questionListOptionsEL.length; i++) {
@@ -182,10 +188,26 @@ function collectAnswer (event) {
         console.log(answer);
 
         if (answer.includes(questionlist[questionCounter].answer)) {
-            //add correct answer sound
+            var newSpan = document.createElement("span");
+        
+            newSpan.style.marginLeft = "10px";
+            newSpan.style.fontSize = "30pt";
+            newSpan.style.color = "green";
+            newSpan.setAttribute("class", "response");
+            newSpan.innerHTML  = "&#10004;";
+
+            event.target.parentElement.appendChild(newSpan)
         }
         else {
-            //add wrong answer sound
+            var newSpan = document.createElement("span");
+        
+            newSpan.style.marginLeft = "10px";
+            newSpan.style.fontSize = "25pt";
+            newSpan.style.color = "red";
+            newSpan.setAttribute("class", "response");
+            newSpan.innerHTML  = "&#10060;";
+
+            event.target.parentElement.appendChild(newSpan)
 
             if (timeRemaining - 10 <= 0) {
                 timeRemaining = 0
@@ -196,7 +218,8 @@ function collectAnswer (event) {
                   
         };   
                     
-        nextQuestion();
+        setTimeout(nextQuestion, 1000)
+        return;
 };
 
 function shuffle(array) {
