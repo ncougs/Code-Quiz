@@ -5,6 +5,8 @@
         <meta charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="Assets/CSS/reset.css" />
         <link rel="stylesheet" type="text/css" href="Assets/CSS/style.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;800&display=swap" rel="stylesheet">  
     </head>
     <body>
         <header>
@@ -18,19 +20,24 @@
                 <h1>Code Quiz Challenge</h1>
                 <div class="mainText">
                     <h2>Start the quiz to beat the highscore!</h2>
-                    <p>Answer all questons before the timer runs out. Any wrong answers will decrease the time remaining on the clock. Your final scroe is the amount of time remaning. Good luck!</p>
+                    <ul>
+                        <li>Answer all questons before the timer runs out.</li>
+                        <li>Any wrong answers will decrease the time remaining on the clock.</li>
+                        <li>Your final score is the amount of time remaning.</li>
+                    </ul>
+                    <h3>Good luck!</h3>
                 </div>
                 <button id="startQuiz">Start Quiz</button>
             </section>
 
             <section class="questionSection">
-                <h2 id="question">Question:</h2>
+                <h2 id="question"></h2>
                 <ul class="questionOptions"></ul>
             </section>
 
             <section class="finalPage">
                 <h2>Game Over!</h2>
-                <p>Your final scros is: <span id="finalScoreText" ></span></p>
+                <p>Your final score is: <span id="finalScoreText" ></span></p>
                 <form>
                     <label>Enter initials: </label>
                     <input id="initials" type="text">

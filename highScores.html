@@ -5,6 +5,8 @@
         <meta charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="Assets/CSS/reset.css" />
         <link rel="stylesheet" type="text/css" href="Assets/CSS/style.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;800&display=swap" rel="stylesheet">  
     </head>
     <body>
         <header>
@@ -14,8 +16,11 @@
             <section class="highScoreSection">
                 <h2>Highscores</h2>
                 <ul id="displayHighScores"></ul>
-                <button id="restartQuiz">Go Back</button>
-                <button id="clearScores">Clear Highscores</button>
+                <div class="highScoreFooter" >
+                    <button id="restartQuiz">Go Back</button>
+                    <button id="clearScores">Clear Highscores</button>
+                </div>
+          
             </section>
         </main>
         <script src="Assets/JavaScript/highScore.js"></script>

@@ -8,10 +8,6 @@ var questionEL = document.querySelector("#question");
 var questionOptionsEL = document.querySelector(".questionOptions");
 var initalsInputEL = document.querySelector("#initials");
 var submitInitialsEL = document.querySelector("#submitForm");
-var option1 = document.getElementById("option1");
-var option2 = document.getElementById("option2");
-var option3 = document.getElementById("option3");
-var option4 = document.getElementById("option4");
 
 //Global Scope Variables
 
@@ -79,23 +75,32 @@ function finalPage () {
 function submitHighScore (event) {
     event.preventDefault();
 
-    var newScore = {
-        "score": timeRemaining,
-        "initials": initalsInputEL.value,
-    };
+    var initals = initalsInputEL.value
 
-    var highScores = JSON.parse(localStorage.getItem("highScoreList"));
-
-    if (highScores === null) {
-            highScores = [newScore];
+    if (initals === "") {
+            alert("Please enter intials")
+            return;
     }
     else {
-        highScores.push(newScore);
-      };
+        var newScore = {
+            "score": timeRemaining,
+            "initials": initals,
+        };
+    
+        var highScores = JSON.parse(localStorage.getItem("highScoreList"));
+    
+        if (highScores === null) {
+                highScores = [newScore];
+        }
+        else {
+            highScores.push(newScore);
+          };
+    
+        localStorage.setItem("highScoreList", JSON.stringify(highScores));
 
-    localStorage.setItem("highScoreList", JSON.stringify(highScores));
-   
-    location.href = "highScores.html";   
+        location.href = "highScores.html";   
+    };
+    
 };
 
 //Timer

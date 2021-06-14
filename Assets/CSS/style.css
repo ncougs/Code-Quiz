@@ -1,5 +1,28 @@
+*{
+    Font-family:'Rubik', sans-serif;
+    scroll-behavior: smooth;
+    color: white;
+}
+
+body {
+    background-color: #1D2228;
+}
+
+header, button, #submitForm {
+    Font-family:'Rubik', sans-serif;
+}
+
+button, #submitForm {
+    background-color: #425664;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 25px;
+    padding: 10px;
+
+}
 
 header nav {
+    padding: 20px;
     display: flex;
     flex-direction: row;
 }
@@ -43,8 +66,16 @@ main {
     padding-bottom: 10px;
 }
 
-.mainText p {
-    width: 50%;
+.mainText li {
+    text-align: center;
+    padding: 10px;
+    font-size: 15pt;
+}
+
+.mainText h3 {
+    font-size: 20pt;
+    font-weight: bold;
+    padding: 10px;
 }
 
 .questionSection, .finalPage {
@@ -57,9 +88,62 @@ main {
 }
 
 .questionSection button {
-    padding: 5px;
+    margin-bottom: 20px;
+    font-size: 15pt;
+}
+
+.questionOptions {
+    margin-top: 20px;
+}
+
+.finalPage h2, .finalPage p, .finalPage form {
+    padding: 20px;
+}
+
+.finalPage p {
+    font-size: 40pt;
+}
+
+.finalPage form {
+    font-size: 25pt;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#initials {
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 25px;
+    flex-grow: 1;
+    color: black;
+    text-align: center;
+    font-size: 20pt;
+}
+
+.highScoreFooter {
+    display: flex;
+    justify-content: space-between;
+}
+
+#restartQuiz {
+    align-self: flex-start;
+}
+
+#clearScores {
+    align-self: flex-end;
+}
+
+#displayHighScores {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.highScore {
+    text-align: left;
     margin-bottom: 10px;
 }
+
+
+
 
 
 
