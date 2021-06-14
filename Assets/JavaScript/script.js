@@ -134,6 +134,8 @@ function addQuestion () {
 
     questionEL.textContent = question;
 
+    shuffle(options);
+
     var counter = 1;
 
     for (i=0; i < options.length; i++) {
@@ -149,6 +151,8 @@ function addQuestion () {
 
         counter = counter + 1;
     };  
+
+    return;
 }
 
 function nextQuestion () {
@@ -168,6 +172,7 @@ function nextQuestion () {
     else {
         addQuestion();
     };
+    return;
 };
 
 function collectAnswer (event) {
@@ -194,6 +199,23 @@ function collectAnswer (event) {
         nextQuestion();
 };
 
+function shuffle(array) {
+    var currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  }
 
 //Calls Start Quiz function
 
