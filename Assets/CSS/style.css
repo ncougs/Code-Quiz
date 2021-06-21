@@ -141,6 +141,11 @@ main {
 .highScore {
     text-align: left;
     margin-bottom: 10px;
+    width: fit-content;
+}
+
+.lastestResult {
+    background-color: green;
 }
 
 

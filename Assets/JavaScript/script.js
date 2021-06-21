@@ -32,7 +32,7 @@ var question3 = {
 };
 
 var question4 = {
-    question: "How to you retrieve Local Storage?",
+    question: "How do you retrieve Local Storage?",
     options: ["localStorage.retrieveItem(name)", "localStorage.getItem(name)", "getLocalStorage(name)", "storageItem(name)"],
     answer: "localStorage.getItem(name)"
 };
@@ -84,22 +84,27 @@ function submitHighScore (event) {
         var newScore = {
             "score": timeRemaining,
             "initials": initals,
+            "submitted": Date()
         };
-    
-        var highScores = JSON.parse(localStorage.getItem("highScoreList"));
-    
-        if (highScores === null) {
-                highScores = [newScore];
-        }
-        else {
-            highScores.push(newScore);
-          };
-    
-        localStorage.setItem("highScoreList", JSON.stringify(highScores));
+    }
 
-        location.href = "highScores.html";   
-    };
+    localStorage.setItem("newestResult", newScore.submitted);
+
+    localStorage.setItem("newResult", true);
     
+    var highScores = JSON.parse(localStorage.getItem("highScoreList"));
+
+    if (highScores === null) {
+            highScores = [newScore];
+    }
+    else {
+        highScores.push(newScore);
+        };
+
+    localStorage.setItem("highScoreList", JSON.stringify(highScores));
+
+    location.href = "highScores.html";   
+   
 };
 
 //Timer
@@ -247,10 +252,9 @@ function shuffle(array) {
 
 function init () {
     startButton.addEventListener("click", startQuiz);
-    if(timeRemaining== 0) {
-        finalPage();
-    };
-
+    document.querySelector("#highScore").addEventListener("click", function () {
+        localStorage.setItem("newResult", false)
+    })
 };
 
 init();

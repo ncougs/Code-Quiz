@@ -21,6 +21,10 @@ function addHighScores () {
             var newListEL = document.createElement("li");
             newListEL.textContent = counter + ".    " +  element.initials.toUpperCase().trim() + " - " + element.score; 
             newListEL.setAttribute("class", "highScore");
+
+            if (localStorage.getItem("newestResult")===element.submitted && localStorage.getItem("newResult")=="true") {
+                newListEL.setAttribute("class", "highScore lastestResult");
+            };
         
             displayHighScoreEL.appendChild(newListEL);
 
