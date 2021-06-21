@@ -54,7 +54,6 @@ function startQuiz () {
     startQuizDisplay()
     setTimer();
     addQuestion();
-    questionOptionsEL.addEventListener("click", collectAnswer);
     submitInitialsEL.addEventListener("click", submitHighScore);
 }
 
@@ -113,6 +112,8 @@ function countDown () {
     }
     else if (timeRemaining <= 0) {
         countDownTimerEL.textContent = 0;
+        finalPage();
+        return;
     }
     else {
         timeRemaining = timeRemaining - 1;
@@ -149,8 +150,10 @@ function addQuestion () {
 
         newListEL.appendChild(newButtonEL);
 
+        newButtonEL.addEventListener("click", collectAnswer);
+
         counter = counter + 1;
-    };  
+    };
 
     return;
 }
@@ -191,7 +194,7 @@ function collectAnswer (event) {
             var newSpan = document.createElement("span");
         
             newSpan.style.marginLeft = "10px";
-            newSpan.style.fontSize = "30pt";
+            newSpan.style.fontSize = "25pt";
             newSpan.style.color = "green";
             newSpan.setAttribute("class", "response");
             newSpan.innerHTML  = "&#10004;";
@@ -244,12 +247,13 @@ function shuffle(array) {
 
 function init () {
     startButton.addEventListener("click", startQuiz);
-    return;
+    if(timeRemaining== 0) {
+        finalPage();
+    };
+
 };
 
 init();
-
-
 
 
 
