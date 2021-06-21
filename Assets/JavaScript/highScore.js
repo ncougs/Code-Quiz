@@ -2,7 +2,7 @@ var displayHighScoreEL = document.querySelector("#displayHighScores");
 var goBackEL = document.querySelector("#restartQuiz");
 var resetScoresEL = document.querySelector("#clearScores");
 
-
+//Add highscores to page. 
 function addHighScores () {
 
     var counter = 1;
@@ -34,10 +34,12 @@ function addHighScores () {
     };
 };
 
+//Go back to main page. 
 function goBack () {
     location.href = "index.html";   
 };
 
+//Rest highscore list
 function resetScores () {
     localStorage.setItem("highScoreList", null);
 
@@ -57,7 +59,7 @@ return;
 };
 
 
-
+//When reaching the page, these functions are called.
 addHighScores()
 goBackEL.addEventListener("click", goBack);
 resetScoresEL.addEventListener("click", resetScores);

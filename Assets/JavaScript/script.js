@@ -48,7 +48,7 @@ var question5 = {
 var questionlist = [question1, question2, question3, question4, question5]
 var questionCounter = 0
 
-//Start Quiz
+//function that controls the Quiz when click to start
 
 function startQuiz () {
     startQuizDisplay()
@@ -57,6 +57,7 @@ function startQuiz () {
     submitInitialsEL.addEventListener("click", submitHighScore);
 }
 
+//display quiz start page
 
 function startQuizDisplay () {
     startPageEL.style.display = "none";
@@ -64,6 +65,8 @@ function startQuizDisplay () {
     questionSectionEL.style.display = "block";    
 };
 
+
+//display final page to submit scores
 function finalPage () {
     startPageEL.style.display = "none";
     finalPageEL.style.display = "block";
@@ -71,6 +74,8 @@ function finalPage () {
     document.querySelector("#finalScoreText").textContent = timeRemaining;
 };
 
+
+//on click, submit highscore
 function submitHighScore (event) {
     event.preventDefault();
 
@@ -108,7 +113,6 @@ function submitHighScore (event) {
 };
 
 //Timer
-
 function countDown () {
 
     if (questionCounter == questionlist.length) {
@@ -126,6 +130,7 @@ function countDown () {
     };
 }
 
+//Set countdown timer
 function setTimer () {
     setInterval(countDown,1000);
     if (questionCounter == questionlist.length) {
@@ -133,6 +138,7 @@ function setTimer () {
     };
 }
 
+//add next questions
 function addQuestion () {
 
     var options = questionlist[questionCounter].options;
@@ -163,6 +169,7 @@ function addQuestion () {
     return;
 }
 
+//prepare for next question
 function nextQuestion () {
 
     var answerResponse = document.querySelectorAll(".response");
@@ -181,7 +188,6 @@ function nextQuestion () {
   
     if (questionCounter == questionlist.length) {
         finalPage();
-        // questionCounter = 0;
     }
     else {
         addQuestion();
@@ -189,6 +195,7 @@ function nextQuestion () {
     return;
 };
 
+//Get answer and display results
 function collectAnswer (event) {
 
         answer = event.target.textContent;
@@ -230,6 +237,7 @@ function collectAnswer (event) {
         return;
 };
 
+//random shuffle of array
 function shuffle(array) {
     var currentIndex = array.length,  randomIndex;
   
